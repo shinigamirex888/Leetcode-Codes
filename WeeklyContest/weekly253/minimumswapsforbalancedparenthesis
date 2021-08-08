@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+class Solution {
+public:
+    int minSwaps(string s) {
+        stack<int>st;
+        int cnt=0;
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='['){
+                st.push(s[i]);
+            }else{
+                if(!st.empty()){
+                    st.pop();
+                }else{
+                    cnt++;
+                }
+            }
+        }
+        int left=cnt+st.size();
+        left/=2;
+        if(left%2==0) return left/2;
+        return (left/2)+1;
+    }
+};
